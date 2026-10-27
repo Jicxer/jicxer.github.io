@@ -11,10 +11,25 @@
 //   - Output is always rendered as plain text (textContent), so echoing
 //     visitor input back is XSS-safe. Never switch it to innerHTML.
 //
-// Example:
-//   ["sudo", () => "guest is not in the sudoers file. This incident will be reported."],
-//   ["echo-twice", (args) => [args.join(" "), args.join(" ")]],
 export const eggs = new Map([
+  // xkcd #149
+  ["sudo", (args) => args.join(" ") === "make me a sandwich"
+    ? "Okay."
+    : "guest is not in the sudoers file. This incident will be reported."],
+  ["make", (args) => args.join(" ") === "me a sandwich"
+    ? "What? Make it yourself."
+    : "make: *** No targets specified and no makefile found.  Stop."],
+
+  ["rm", (args) => args.includes("/") && args.some((a) => /^-\w*r/.test(a))
+    ? ["rm: it is dangerous to operate recursively on '/'",
+       "rm: use --no-preserve-root to override this failsafe",
+       "(nice try)"]
+    : "rm: cannot remove: Read-only file system"],
+
+  ["vim", () => ["We don't have vim."]],
+  ["emacs", () => "emacs: command not found. Have you tried vim?"],
+  ["apt", () => "E: Could not open lock file /var/lib/dpkg/lock - open (13: Permission denied). Are you root?"],
+  ["curl", (args) => args[0] === "coffee" ? "HTTP/1.1 418 I'm a teapot" : "curl: (6) Could not resolve host"],
 ]);
 
 // files: extra entries for the virtual filesystem.
