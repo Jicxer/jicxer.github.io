@@ -344,6 +344,7 @@ main {
 .card:hover { border-color: color-mix(in srgb, var(--accent) 50%, var(--border)); }
 .card h3 { margin: 0 0 10px; font-size: 1.08rem; }
 .card-sub { display: block; font-size: 0.82rem; font-weight: 400; color: var(--muted); font-family: var(--mono); }
+.card-sub time { white-space: nowrap; }
 
 /* ==========================================================================
    Tags / badges / skills
