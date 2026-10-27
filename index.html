@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--
+    GitHub Pages cannot set HTTP response headers, so the CSP is delivered via meta tag.
+    Everything is first-party: no CDNs, no web fonts, no analytics, no inline scripts/styles.
+    (frame-ancestors is not honored in a meta CSP; that would need a real header.)
+  -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>[Your Name] | Security &amp; Cloud</title>
+  <meta name="description" content="Security analyst and NOC technician with experience in SIEM/EDR triage, KQL detection engineering, and AWS/Terraform automation.">
+  <meta name="color-scheme" content="dark">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b0f14'/%3E%3Ctext x='5' y='22' font-family='monospace' font-size='16' fill='%2339d98a'%3E%3E_%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary">
+      <a class="nav-brand" href="#top"><span class="prompt">~$</span> [your-name]</a>
+      <ul class="nav-links">
+        <li><a href="#about">about</a></li>
+        <li><a href="#experience">experience</a></li>
+        <li><a href="#projects">projects</a></li>
+        <li><a href="#skills">skills</a></li>
+        <li><a href="#contact">contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- ===== Hero ===== -->
+    <section id="top" class="hero">
+      <div class="terminal" role="presentation">
+        <div class="terminal-bar" aria-hidden="true">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="terminal-title">bash</span>
+        </div>
+        <div class="terminal-body">
+          <p class="cmd"><span class="prompt">$</span> whoami</p>
+          <h1 class="hero-name">[Your Name]</h1>
+          <p class="cmd"><span class="prompt">$</span> cat role.txt</p>
+          <p class="hero-role">Security Analyst &middot; NOC Technician &middot; Cloud Automation</p>
+          <p class="cmd"><span class="prompt">$</span> <span class="cursor" aria-hidden="true"></span></p>
+        </div>
+      </div>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#contact">Get in touch</a>
+        <a class="btn" href="#projects">View projects</a>
+      </div>
+    </section>
+
+    <!-- ===== About ===== -->
+    <section id="about" class="section">
+      <h2 class="section-title"><span class="prompt">#</span> about</h2>
+      <p class="lead">
+        Computer Science graduate from Oregon State University with hands-on experience in security operations,
+        network operations, and cloud infrastructure. I&rsquo;ve triaged SIEM and EDR alerts at a university SOC,
+        written KQL detections in Microsoft Sentinel, and built tooling that makes repetitive work disappear,
+        whether that&rsquo;s a browser extension, a Bash script, or a Terraform module.
+      </p>
+      <p class="badge-row">
+        <span class="badge">CompTIA Security+ (SY0-701)</span>
+        <span class="badge">B.S. Computer Science</span>
+      </p>
+    </section>
+
+    <!-- ===== Experience ===== -->
+    <section id="experience" class="section">
+      <h2 class="section-title"><span class="prompt">#</span> experience</h2>
+
+      <ol class="timeline">
+        <li class="timeline-item">
+          <div class="timeline-head">
+            <h3>Network Operations Center Technician</h3>
+            <p class="meta"><span class="org">Cook Solutions Group</span> <time>Jun 2025 &ndash; Present</time></p>
+          </div>
+          <ul class="bullets">
+            <li>Developed a JavaScript browser extension that consumed an internal REST API, handling paginated requests, session-based authentication, and JSON transformation to auto-populate ticket data, reducing manual entry errors across the NOC team.</li>
+            <li>Triaged and prioritized incoming alerts across ATM, alarm, and camera-surveillance systems, consistently meeting SLA targets while coordinating cross-functional incident response and escalation workflows.</li>
+            <li>Delivered technical support via phone and email, translating complex system findings into clear, actionable reports for technical and non-technical stakeholders across multiple customer accounts.</li>
+          </ul>
+        </li>
+
+        <li class="timeline-item">
+          <div class="timeline-head">
+            <h3>Security Analyst</h3>
+            <p class="meta"><span class="org">Oregon State Security Operations Center</span> <time>Jul 2024 &ndash; Mar 2025</time></p>
+          </div>
+          <ul class="bullets">
+            <li>Developed KQL queries and dashboards in Microsoft Sentinel to detect anomalous user behavior, leveraging proprietary AI tools to accelerate query development, debugging, and documentation.</li>
+            <li>Monitored and triaged 50&ndash;100+ daily security alerts across SIEM and EDR platforms, identifying and escalating high-risk incidents for containment.</li>
+            <li>Collaborated with fellow analysts to identify repetitive tasks and implemented automation scripts that improved operational efficiency and reduced analyst fatigue.</li>
+          </ul>
+        </li>
+
+        <li class="timeline-item">
+          <div class="timeline-head">
+            <h3>Undergraduate Learning Assistant</h3>
+            <p class="meta"><span class="org">Oregon State University (EECS)</span> <time>Sep 2024 &ndash; Dec 2024</time></p>
+          </div>
+          <ul class="bullets">
+            <li>Built a Bash automation script and Makefile to compile and execute student C++/Python submissions, redirecting test inputs and logging outputs to streamline grading.</li>
+            <li>Co-led two weekly 2-hour studio sessions for 25+ students, delivering hands-on instruction in C/Python programming and debugging methodologies.</li>
+            <li>Held weekly office hours, helping students with questions and assignments.</li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ===== Projects ===== -->
+    <section id="projects" class="section">
+      <h2 class="section-title"><span class="prompt">#</span> projects</h2>
+
+      <div class="cards">
+        <article class="card">
+          <h3>Cloud Infrastructure Automation</h3>
+          <ul class="tags" aria-label="Technologies">
+            <li>AWS</li><li>Terraform</li><li>Ansible</li><li>Docker</li><li>Bash</li>
+          </ul>
+          <ul class="bullets">
+            <li>Provisioned AWS infrastructure with Terraform, automating EC2 deployment, security group rules, networking, and IAM credential management for a containerized server environment.</li>
+            <li>Automated server configuration with Ansible YAML playbooks, deploying a Dockerized application with auto-restart on reboot.</li>
+            <li>Wrote a Bash install script to bootstrap the AWS CLI, Terraform, and Git, reducing manual setup across environments.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Secure Log Collection Service <span class="card-sub">Senior Capstone</span></h3>
+          <ul class="tags" aria-label="Technologies">
+            <li>Rust</li><li>AWS SDK</li><li>IAM</li><li>RBAC</li>
+          </ul>
+          <ul class="bullets">
+            <li>Implemented IAM authentication and role-based access control with the Rust AWS SDK, validating group membership to scope admin vs. standard permissions in a cloud-native log pipeline.</li>
+            <li>Developed async IAM functions to retrieve and validate user credentials, handling SDK errors in a multi-user AWS environment.</li>
+            <li>Contributed to AWS infrastructure for a multi-client log ingestion pipeline, including data storage configuration and IAM-based access control.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== Skills & Education ===== -->
+    <section id="skills" class="section">
+      <h2 class="section-title"><span class="prompt">#</span> skills</h2>
+
+      <div class="skill-groups">
+        <div class="skill-group">
+          <h3>Languages</h3>
+          <ul class="tags"><li>C/C++</li><li>Python</li><li>Rust</li><li>Bash</li><li>SQL</li><li>JavaScript</li><li>KQL</li></ul>
+        </div>
+        <div class="skill-group">
+          <h3>Cloud &amp; DevOps</h3>
+          <ul class="tags"><li>AWS CLI</li><li>Terraform</li><li>Ansible</li><li>Docker</li><li>Kubernetes</li><li>YAML</li><li>GitHub / CI-CD</li></ul>
+        </div>
+        <div class="skill-group">
+          <h3>Security</h3>
+          <ul class="tags"><li>Microsoft Sentinel</li><li>SIEM / EDR triage</li><li>Incident escalation</li><li>IAM / RBAC</li></ul>
+        </div>
+        <div class="skill-group">
+          <h3>Tooling</h3>
+          <ul class="tags"><li>ChatGPT</li><li>Claude Code</li></ul>
+        </div>
+      </div>
+
+      <h3 class="subhead">Education &amp; Certifications</h3>
+      <div class="edu">
+        <div>
+          <p class="edu-title">B.S. Computer Science, Minor in Psychology</p>
+          <p class="meta"><span class="org">Oregon State University</span> <time>Sep 2020 &ndash; Dec 2024</time></p>
+          <p class="muted">Coursework: Machine Learning &amp; Data Mining, Artificial Intelligence, Operating Systems I &amp; II, System Administration, Database Systems, Software Engineering, Computer Architecture</p>
+        </div>
+        <div>
+          <p class="edu-title">CompTIA Security+ (SY0-701)</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Contact ===== -->
+    <section id="contact" class="section">
+      <h2 class="section-title"><span class="prompt">#</span> contact</h2>
+      <p class="lead">The fastest way to reach me is email. Click to copy it.</p>
+
+      <div class="contact-row">
+        <!--
+          The address is split across data attributes and only assembled in JS on click,
+          so it never appears as a plain string for naive scrapers.
+        -->
+        <button type="button" class="btn btn-primary" id="copy-email"
+                data-user="REPLACE_ME" data-domain="example.com">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3z" fill="none" stroke="currentColor" stroke-width="2"/><path d="m3 6 9 7 9-7" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+          <span class="btn-label">Copy email</span>
+        </button>
+
+        <a class="btn" href="https://github.com/Jicxer" target="_blank" rel="noopener noreferrer">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.6 18.3 5 18.3 5c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 6 .4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5Z"/></svg>
+          GitHub
+        </a>
+
+        <a class="btn" href="https://www.linkedin.com/in/REPLACE_ME" target="_blank" rel="noopener noreferrer">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6h.1c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2ZM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2Zm1.8 13.1H3.5V9h3.6v11.5ZM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7C24 .8 23.2 0 22.2 0Z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+
+      <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><span class="prompt">$</span> echo &quot;&copy; <span id="year">2026</span> [Your Name]&quot;</p>
+  </footer>
+</body>
+</html>
