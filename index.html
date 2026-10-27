@@ -11,19 +11,20 @@
   <meta http-equiv="Content-Security-Policy"
         content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <title>Jicxer </title>
+  <title>[John Ivan Chan] </title>
   <meta name="description" content="Security analyst and NOC technician with experience in SIEM/EDR triage, KQL detection engineering, and AWS/Terraform automation.">
   <meta name="color-scheme" content="dark">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b0f14'/%3E%3Ctext x='5' y='22' font-family='monospace' font-size='16' fill='%2339d98a'%3E%3E_%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="assets/css/style.css">
   <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/terminal.js" type="module"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
     <nav class="nav" aria-label="Primary">
-      <a class="nav-brand" href="#top"><span class="prompt">~$</span> Ivan Chan</a>
+      <a class="nav-brand" href="#top"><span class="prompt">~$</span> [your-name]</a>
       <ul class="nav-links">
         <li><a href="#about">about</a></li>
         <li><a href="#experience">experience</a></li>
@@ -37,18 +38,40 @@
   <main id="main">
     <!-- ===== Hero ===== -->
     <section id="top" class="hero">
-      <div class="terminal" role="presentation">
+      <!--
+        Interactive terminal (assets/js/terminal.js). Without JS this renders as the static
+        intro below; with JS the input line and chips are revealed. Terminal commands read
+        their content from the sections further down, so edit content there, not in JS.
+      -->
+      <div class="terminal" id="terminal" data-user="guest" data-host="jicxer">
         <div class="terminal-bar" aria-hidden="true">
           <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-          <span class="terminal-title">bash</span>
+          <span class="terminal-title" id="term-title">bash</span>
         </div>
-        <div class="terminal-body">
-          <p class="cmd"><span class="prompt">$</span> whoami</p>
-          <h1 class="hero-name">Ivan Chan</h1>
-          <p class="cmd"><span class="prompt">$</span> cat role.txt</p>
-          <p class="hero-role">Security Analyst &middot; NOC Technician </p>
-          <p class="cmd"><span class="prompt">$</span> <span class="cursor" aria-hidden="true"></span></p>
+        <div class="terminal-body" id="term-body">
+          <div class="term-output" id="term-output" role="log" aria-label="Terminal output">
+            <p class="cmd"><span class="prompt">$</span> whoami</p>
+            <h1 class="hero-name">[John Ivan Chan]</h1>
+            <p class="cmd"><span class="prompt">$</span> cat role.txt</p>
+            <p class="hero-role">Security Analyst &middot; NOC Technician </p>
+            <p class="cmd" id="term-static-cursor"><span class="prompt">$</span> <span class="cursor" aria-hidden="true"></span></p>
+          </div>
+          <div class="term-input-line" id="term-input-line" hidden>
+            <label class="term-prompt" id="term-prompt" for="term-input"></label>
+            <input class="term-input" id="term-input" type="text" maxlength="256"
+                   autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+                   aria-label="Terminal command">
+          </div>
         </div>
+      </div>
+      <div class="term-chips" id="term-chips" hidden>
+        <span class="muted">try:</span>
+        <button type="button" class="chip" data-cmd="help">help</button>
+        <button type="button" class="chip" data-cmd="about">about</button>
+        <button type="button" class="chip" data-cmd="projects">projects</button>
+        <button type="button" class="chip" data-cmd="skills">skills</button>
+        <button type="button" class="chip" data-cmd="contact">contact</button>
+        <button type="button" class="chip" data-cmd="ls -la">ls -la</button>
       </div>
       <div class="hero-actions">
         <a class="btn btn-primary" href="#contact">Get in touch</a>
@@ -75,7 +98,7 @@
       <h2 class="section-title"><span class="prompt">#</span> experience</h2>
 
       <ol class="timeline">
-        <li class="timeline-item">
+        <li class="timeline-item" data-file="cook-solutions-group.txt">
           <div class="timeline-head">
             <h3>Network Operations Center Technician</h3>
             <p class="meta"><span class="org">Cook Solutions Group</span> <time>Jun 2025 &ndash; Present</time></p>
@@ -87,7 +110,7 @@
           </ul>
         </li>
 
-        <li class="timeline-item">
+        <li class="timeline-item" data-file="osu-soc.txt">
           <div class="timeline-head">
             <h3>Security Analyst</h3>
             <p class="meta"><span class="org">Oregon State Security Operations Center</span> <time>Jul 2024 &ndash; Mar 2025</time></p>
@@ -99,7 +122,7 @@
           </ul>
         </li>
 
-        <li class="timeline-item">
+        <li class="timeline-item" data-file="osu-learning-assistant.txt">
           <div class="timeline-head">
             <h3>Undergraduate Learning Assistant</h3>
             <p class="meta"><span class="org">Oregon State University (EECS)</span> <time>Sep 2024 &ndash; Dec 2024</time></p>
@@ -118,7 +141,7 @@
       <h2 class="section-title"><span class="prompt">#</span> projects</h2>
 
       <div class="cards">
-        <article class="card">
+        <article class="card" data-file="cloud-infra-automation.md">
           <h3>Cloud Infrastructure Automation</h3>
           <ul class="tags" aria-label="Technologies">
             <li>AWS</li><li>Terraform</li><li>Ansible</li><li>Docker</li><li>Bash</li>
@@ -130,7 +153,7 @@
           </ul>
         </article>
 
-        <article class="card">
+        <article class="card" data-file="secure-log-collection.md">
           <h3>Secure Log Collection Service <span class="card-sub">Senior Capstone</span></h3>
           <ul class="tags" aria-label="Technologies">
             <li>Rust</li><li>AWS SDK</li><li>IAM</li><li>RBAC</li>
@@ -191,7 +214,7 @@
           so it never appears as a plain string for naive scrapers.
         -->
         <button type="button" class="btn btn-primary" id="copy-email"
-                data-user="johnivanchan21" data-domain="gmail.com">
+                data-user="REPLACE_ME" data-domain="example.com">
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3z" fill="none" stroke="currentColor" stroke-width="2"/><path d="m3 6 9 7 9-7" fill="none" stroke="currentColor" stroke-width="2"/></svg>
           <span class="btn-label">Copy email</span>
         </button>
@@ -201,7 +224,7 @@
           GitHub
         </a>
 
-        <a class="btn" href="https://www.linkedin.com/in/john-ivan-chan/" target="_blank" rel="noopener noreferrer">
+        <a class="btn" href="https://www.linkedin.com/in/REPLACE_ME" target="_blank" rel="noopener noreferrer">
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6h.1c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2ZM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2Zm1.8 13.1H3.5V9h3.6v11.5ZM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7C24 .8 23.2 0 22.2 0Z"/></svg>
           LinkedIn
         </a>
@@ -212,7 +235,7 @@
   </main>
 
   <footer class="site-footer">
-    <p><span class="prompt">$</span> echo &quot;&copy; <span id="year">2026</span> John Ivan Chan&quot;</p>
+    <p><span class="prompt">$</span> echo &quot;&copy; <span id="year">2026</span> [Your Name]&quot;</p>
   </footer>
 </body>
 </html>
