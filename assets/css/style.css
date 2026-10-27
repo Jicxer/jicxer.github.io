@@ -189,6 +189,80 @@ main {
 .hero-actions { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
 
 /* ==========================================================================
+   Interactive terminal (enabled by assets/js/terminal.js)
+   ========================================================================== */
+[hidden] { display: none !important; }
+
+.terminal:focus-within { border-color: color-mix(in srgb, var(--accent) 60%, var(--border)); }
+
+.terminal.is-interactive .terminal-body {
+  height: clamp(340px, 58vh, 540px);
+  overflow-y: auto;
+  cursor: text;
+  overscroll-behavior: contain;
+  scrollbar-color: var(--border) transparent;
+}
+
+.term-line {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  min-height: 1.65em;
+}
+.term-line a { color: var(--accent-2); }
+
+.t-echo { margin-top: 6px; }
+.t-userhost { color: var(--accent); font-weight: 600; }
+.t-path { color: var(--accent-2); font-weight: 600; }
+.t-dir { color: var(--accent-2); font-weight: 600; }
+.t-head { color: var(--accent); font-weight: 600; }
+.t-org { color: var(--accent-2); }
+.t-muted { color: var(--muted); }
+.t-err { color: var(--warn); }
+.t-cmdname { color: var(--text); }
+.t-art { color: var(--accent); }
+
+.term-input-line {
+  display: flex;
+  align-items: baseline;
+  gap: 1ch;
+  margin-top: 6px;
+}
+.term-prompt { flex-shrink: 0; white-space: nowrap; }
+.term-input {
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: max(16px, 1em); /* stops iOS zooming in on focus */
+  caret-color: var(--accent);
+  outline: none; /* focus is shown on the terminal frame via :focus-within */
+}
+
+.term-chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+}
+.chip {
+  padding: 4px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg-term);
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.chip:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ==========================================================================
    Buttons
    ========================================================================== */
 .btn {
