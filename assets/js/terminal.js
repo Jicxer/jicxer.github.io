@@ -8,7 +8,7 @@
 //   - Commands and filesystem entries live in Maps, so names like "__proto__"
 //     or "constructor" can't resolve to Object.prototype members.
 //   - Input length and scrollback are capped so a visitor can't freeze their own tab.
-import { eggs, files as extraFiles } from "./easter-eggs.js";
+import { eggs, files as extraFiles, patterns } from "./easter-eggs.js";
 
 const MAX_INPUT = 256;
 const MAX_LINES = 1000;
@@ -543,9 +543,20 @@ function run(rawInput) {
   if (!trimmed) return;
   if (commandHistory[commandHistory.length - 1] !== trimmed) commandHistory.push(trimmed);
 
+  const term = { print, error, clear };
+
+  // Pattern eggs see the raw line, so payloads like <script>…</script> match no
+  // matter how they tokenize. The line is only tested, never executed.
+  try {
+    const hit = patterns.find((p) => p.test.test(trimmed));
+    if (hit) return toLines(hit.run(trimmed, term));
+  } catch (err) {
+    console.error(err);
+    return error("bash: internal error");
+  }
+
   const [name, ...args] = tokenize(trimmed);
   if (name === undefined) return;
-  const term = { print, error, clear };
 
   try {
     // Easter eggs win over built-ins so they can override them.
@@ -720,3 +731,9 @@ function init() {
 }
 
 init();
+
+// For visitors who open DevTools looking for bugs.
+console.log(
+  "%cLooking for vulns? 👀 The CSP says no. Try 'help' in the terminal instead.",
+  "color:#39d98a;font:14px monospace"
+);
