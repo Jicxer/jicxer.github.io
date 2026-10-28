@@ -45,3 +45,31 @@ export const eggs = new Map([
 //   ["/etc/motd", ["Authorized users only.", "All activity may be monitored."]],
 export const files = new Map([
 ]);
+
+// patterns: regexes tested against the raw input line before any command runs.
+//   - run(input, term) works like an egg handler: return text or call term.print().
+//   - Never use the /g flag: it makes .test() keep state between calls.
+//   - Never pass the input to eval/innerHTML or echo it back; respond with fixed text.
+//   - Keep regexes simple (no nested repeats) so a crafted line can't hang the tab.
+export const patterns = [
+  {
+    // Common XSS probes: <script>, onerror= / onload=, javascript:, alert(...)
+    test: /<\s*\/?\s*script|\bon(?:error|load)\s*=|javascript\s*:|\b(?:alert|prompt|confirm)\s*\(/i,
+    run: (input, term) => {
+      term.print("XSS attempt detected. Payload forwarded to /dev/null.", "t-err");
+      // Fixed string: the visitor's payload itself never runs. The short delay
+      // lets the line above render before the dialog blocks the page.
+      setTimeout(() => alert("nice try 😏"), 50);
+    },
+  },
+  {
+    // SQL injection classics: ' OR 1=1, UNION SELECT, '; DROP TABLE
+    test: /'\s*or\s+'?1'?\s*=\s*'?1|\bunion\s+(?:all\s+)?select\b|;\s*drop\s+table\b/i,
+    run: () => "SQL injection? There isn't even a database here.",
+  },
+  {
+    // Template injection probes: {{7*7}} and ${7*7}
+    test: /\{\{\s*7\s*\*\s*7\s*\}\}|\$\{\s*7\s*\*\s*7\s*\}/,
+    run: () => "49. Template injection would be cool, but this is a static site.",
+  },
+];
